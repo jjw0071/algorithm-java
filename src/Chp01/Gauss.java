@@ -8,8 +8,11 @@ public class Gauss {
         Scanner sc = new Scanner(System.in);
         do{
             System.out.println("1부터 n까지의 합을 가우스 덧셈으로 구합니다.\nn값을 입력하세요.");
-            System.out.println("n 값");
-            int n = sc.nextInt();
+            int n;
+            do{
+                System.out.println("n 값");
+                n = sc.nextInt();
+            }while(n<1);
             gausssum(n);
             System.out.println("한번 더 하시겠습니까?(계속하시려면 1을 누르세요)");
             go = sc.nextInt();
