@@ -37,10 +37,19 @@ public class CardConv {
     public static int cardConv(int number, int cd, char[] cno){
         int digits = 0; // 변환 후 자릿수
         String dchar ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+        System.out.println(cd + " |"+String.format("%6d",number));
         do{
-            cno[digits++]=dchar.charAt(number%cd);
+            printUnderline(cd);
+            cno[digits]=dchar.charAt(number%cd);
             number /= cd;
+            if(number == 0 && cd<10){
+                System.out.println(String.format("%9d",number)+" ... "+cno[digits]);
+            }else if(number == 0){
+                System.out.println(String.format("%10d",number)+" ... "+cno[digits]);
+            }else{
+                System.out.println(cd + " |"+String.format("%6d",number)+" ... "+cno[digits]);
+            }
+            digits++;
         }while(number != 0);
 
         for(int i =0;i<digits/2;i++){
@@ -49,5 +58,14 @@ public class CardConv {
             cno[digits-i-1] = t;
         }
         return digits;
+    }
+
+    public static void printUnderline(int cd){
+        if(cd<10){
+            System.out.print("  ");
+        }else{
+            System.out.print("   ");
+        }
+        System.out.println("+ -----");
     }
 }
