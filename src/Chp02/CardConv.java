@@ -1,6 +1,5 @@
 package Chp02;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class CardConv {
@@ -25,13 +24,30 @@ public class CardConv {
 
             dno = cardConv(number, cd, cno);
 
-            System.out.println(cd +"진수로 ");
+            System.out.print(cd +"진수로 ");
             for (int i = 0; i < dno; i++) {
-                System.out.println(cno[i]);
+                System.out.print(cno[i]);
             }
             System.out.println("입니다.");
             System.out.println("한번 더 하시겠습니까?(계속하시려면 1을 누르세요)");
             go = sc.nextInt();
         } while (go == 1);
+    }
+
+    public static int cardConv(int number, int cd, char[] cno){
+        int digits = 0; // 변환 후 자릿수
+        String dchar ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        do{
+            cno[digits++]=dchar.charAt(number%cd);
+            number /= cd;
+        }while(number != 0);
+
+        for(int i =0;i<digits/2;i++){
+            char t = cno[i];
+            cno[i] = cno[digits-i-1];
+            cno[digits-i-1] = t;
+        }
+        return digits;
     }
 }
