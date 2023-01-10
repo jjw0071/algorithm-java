@@ -13,7 +13,7 @@ public class CardConv {
         do {
             System.out.println("10진수를 기수 변환합니다.");
             do {
-                System.out.print("10진수 : ");
+                System.out.print("변환하는 음이 아닌 정수 : ");
                 number = sc.nextInt();
             } while (number < 0);
 
