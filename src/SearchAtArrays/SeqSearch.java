@@ -8,7 +8,7 @@ public class SeqSearch {
 
         System.out.print("요솟수 : ");
         int num = sc.nextInt();
-        int[] x = new int[num];
+        int[] x = new int[num+1];
 
         for(int i = 0 ;i< num;i++){
             System.out.print("x["+i+"]: ");
@@ -18,7 +18,7 @@ public class SeqSearch {
         System.out.print("검색할 값 : ");
         int ky = sc.nextInt();
 
-        int idx = seqSearch(x, num, ky);
+        int idx = seqSearchSen(x, num, ky);
 
         if(idx == -1){
             System.out.print("그런 요소가 없습니다.");
@@ -36,6 +36,21 @@ public class SeqSearch {
                 return i;
             i++;
         }
+    }
+
+    static int seqSearchSen(int[] x, int num, int key){
+        int i = 0;
+        x[num] = key;
+        while(true){
+            if(x[i] == key){
+                break;
+            }
+            i++;
+        }
+        if(i == num)
+            return -1;
+        else
+            return i;
     }
 
 }
