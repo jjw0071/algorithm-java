@@ -1,4 +1,4 @@
-package bj1406;
+package Baekjoon.bj1406;
 
 import java.util.LinkedList;
 import java.util.ListIterator;

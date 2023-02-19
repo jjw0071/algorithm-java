@@ -1,8 +1,6 @@
-package pm42583;
+package Programmers.pm42583;
 
 import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Solution {
     public static void main(String[] args) {

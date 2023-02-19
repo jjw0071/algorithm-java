@@ -1,4 +1,4 @@
-package bj11279;
+package Baekjoon.bj11279;
 
 import java.util.Collections;
 import java.util.PriorityQueue;

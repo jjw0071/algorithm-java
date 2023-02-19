@@ -1,4 +1,4 @@
-package bj1927;
+package Baekjoon.bj1927;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;

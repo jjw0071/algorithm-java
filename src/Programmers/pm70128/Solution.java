@@ -1,4 +1,4 @@
-package pm70128;
+package Programmers.pm70128;
 
 public class Solution {
     public int solution(int[] a, int[] b) {

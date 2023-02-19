@@ -1,4 +1,4 @@
-package pm42746;
+package Programmers.pm42746;
 
 import java.util.Collections;
 import java.util.PriorityQueue;

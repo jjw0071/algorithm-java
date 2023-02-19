@@ -1,4 +1,4 @@
-package pm42584;
+package Programmers.pm42584;
 
 public class Solution {
     public static void main(String[] args) {

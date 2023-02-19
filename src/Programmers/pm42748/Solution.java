@@ -1,4 +1,4 @@
-package pm42748;
+package Programmers.pm42748;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;

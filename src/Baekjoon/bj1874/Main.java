@@ -1,4 +1,4 @@
-package bj10845;
+package Baekjoon.bj1874;
 
 import java.util.ArrayDeque;
 import java.util.Scanner;

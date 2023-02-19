@@ -1,6 +1,5 @@
-package bj11053;
+package Baekjoon.bj11053;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {

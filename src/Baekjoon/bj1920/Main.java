@@ -1,4 +1,4 @@
-package bj1920;
+package Baekjoon.bj1920;
 
 import java.util.Arrays;
 import java.util.Scanner;
