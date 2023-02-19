@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 
 public class Solution {
     public static void main(String[] args) {
-        solution(new int[]{1, 59, 2, 95, 6});
+        //solution(new int[]{1, 59, 2, 95, 6});
     }
     public String solution(int[] numbers) {
         String[] strings = new String[numbers.length];
