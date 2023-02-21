@@ -7,58 +7,64 @@ public class bj2504 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Stack<int[]> st = new Stack<>();
-        Stack<Integer> toadd = new Stack<>();
         String input = sc.next();
         char[] in = input.toCharArray();
-        boolean over = false;
+        if(in[in.length-1] == '[' || in[in.length-1] == '('){
+            System.out.println(0);
+            System.exit(0);
+        }
         boolean inttoadd = false;
-        int answer=0;
-        int tempint = 0;
+        int now=1;
+        int answer = 0;
         for(int i = 0 ; i<in.length;i++){
             char command = in[i];
-            char temp;
+            int[] temp;
             switch(command) {
                 case '(', '[':
-                    if(inttoadd){
-                        toadd.add(tempint);
-                        inttoadd = false;
-                        tempint = 0;
+                    if(now != 1){
+                       if(st.isEmpty()){
+                           answer = now;
+                           now=1;
+                       }else{
+                           temp = st.pop();
+                           temp[1] += now;
+                           st.add(temp);
+                           now = 1;
+                       }
                     }
-                    st.add(new int[]{command,1});
+                    st.add(new int[]{command,0});
                     break;
                 case ']' :
-                    if(st.isEmpty() || (temp = st.pop()) != '['){
-                        over =true;
-                        break;
+                    if(st.isEmpty() || st.peek()[0] != '['){
+                        System.out.println(0);
+                        System.exit(0);
                     }
-                    if(tempint == 0){
-                        tempint += 3;
+                    temp = st.pop();
+                    if(now == 1){
+                        now *=3;
                     }else{
-                        tempint *=3;
+                        now = (temp[1] + now)*3;
                     }
-                    inttoadd = true;
-
                     break;
                 case ')' :
-                    if(st.isEmpty() || (temp = st.pop()) != '('){
-                        over =true;
-                        break;
+                    if(st.isEmpty() || st.peek()[0] != '('){
+                        System.out.println(0);
+                        System.exit(0);
                     }
-                    if(tempint == 0){
-                        tempint += 2;
+                    temp = st.pop();
+                    if(now == 1){
+                        now *=2;
                     }else{
-                        tempint *=2;
+                        now = (temp[1] + now)*2;
                     }
-                    inttoadd = true;
-
                     break;
             }
-            if(over)
-                break;
         }
-        if(over)
+        if(!st.isEmpty()){
             System.out.println(0);
-        else
-            System.out.println(answer);
+            System.exit(0);
+        }
+        System.out.println(now+answer);
+
     }
 }
