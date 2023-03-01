@@ -4,14 +4,13 @@ public class pm43165_타겟넘버 {
     static int solution(int[] numbers, int target) {
         int[] checked = new int[numbers.length];
         int end = 0;
-        for(int i = 0 ; i<numbers.length;i++){
-            end -= numbers[i];
+        for (int number : numbers) {
+            end -= number;
         }
         int compare = 0;
         int answer = 0;
         boolean check;
         while(compare!=end){
-            check = true;
             compare = 0;
             for(int i = 0 ; i<numbers.length;i++){
                 if(checked[i] == 2){
@@ -31,7 +30,7 @@ public class pm43165_타겟넘버 {
                     checked[i]++;
                 }
             }
-            if(check && compare == target){
+            if(compare == target){
                 System.out.println(" Correct!");
                 answer++;
             }
