@@ -6,8 +6,7 @@ public class pm42842_카펫 {
         int total = brown+yellow;
         int length = 1;
         int height = 0;
-        boolean correct = true;
-        while(correct){
+        while(true){
             if(total%length != 0){
                 length++;
                 continue;
