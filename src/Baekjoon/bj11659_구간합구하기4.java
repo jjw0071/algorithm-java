@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class bj11659_구간합구하기4 {
     public static void main(String[] args) {
         //구간 합 함수가 아닌 매번 전체 구간의 합 구하는 경우
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         int length = sc.nextInt();
         int iteration = sc.nextInt();
         int[] input = new int[length];
@@ -23,8 +23,22 @@ public class bj11659_구간합구하기4 {
                 sum += input[j];
             }
             System.out.println(sum);
+        }*/
+
+        //구간의 합 구하는 경우
+        Scanner sc = new Scanner(System.in);
+        int length = sc.nextInt();
+        int iteration = sc.nextInt();
+        int[] sum = new int[length+1];
+        sum[0] = 0;
+        for(int i = 0 ; i < length;i++){
+            sum[i+1] = sum[i]+sc.nextInt();
         }
-
-
+        int first, last;
+        for(int i = 0 ; i < iteration ;i++){
+            first = sc.nextInt();
+            last = sc.nextInt();
+            System.out.println(sum[last]-sum[first-1]);
+        }
     }
 }
