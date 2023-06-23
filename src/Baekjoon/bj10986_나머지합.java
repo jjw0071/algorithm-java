@@ -10,20 +10,20 @@ public class bj10986_나머지합 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int length = Integer.parseInt(st.nextToken());
         int todiv = Integer.parseInt(st.nextToken());
-        int[] sum = new int[length];
+        long[] sum = new long[length+1];
         sum[0] = 0;
         st = new StringTokenizer(br.readLine());
         for(int i = 0 ; i< length;i++){
             sum[i+1] = sum[i] + Integer.parseInt(st.nextToken());
         }
-        int answer = calculateAll(length, todiv, sum);
+        long answer = modcal(sum,todiv);
         bw.write(answer+"\n");
         bw.flush();
         bw.close();
 
     }
 
-    private static int calculateAll(int length, int todiv, int[] sum) {
+    private static int calculateAll(int length, int todiv, long[] sum) {
         int answer = 0;
         for(int i = 1; i< length +1; i++){
             for(int j = 0 ; j< i;j++){
@@ -31,6 +31,26 @@ public class bj10986_나머지합 {
                     answer++;
                 }
             }
+        }
+        return answer;
+    }
+
+    private static long modcal(long[] sum, int todiv){
+        long answer = 0;
+        int[] modar = new int[sum.length-1];
+        for(int i = 0 ; i<modar.length;i++){
+            modar[i] = (int)(sum[i+1] % todiv);
+            if(modar[i] == 0){
+                answer++;
+            }
+        }
+        long[] modcounts = new long[todiv];
+        for(int i = 0 ; i<modar.length;i++){
+            modcounts[modar[i]]++;
+        }
+
+        for(int i = 0 ; i < modcounts.length;i++){
+            answer += modcounts[i]*(modcounts[i]-1)/2;
         }
         return answer;
     }
