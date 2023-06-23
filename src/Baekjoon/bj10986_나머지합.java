@@ -10,23 +10,29 @@ public class bj10986_나머지합 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int length = Integer.parseInt(st.nextToken());
         int todiv = Integer.parseInt(st.nextToken());
-        int[] sum = new int[length+1];
+        int[] sum = new int[length];
         sum[0] = 0;
         st = new StringTokenizer(br.readLine());
         for(int i = 0 ; i< length;i++){
             sum[i+1] = sum[i] + Integer.parseInt(st.nextToken());
         }
-        int answer = 0;
-        for(int i = 1 ; i<length+1;i++){
-            for(int j = 0 ; j< i;j++){
-                if((sum[i]-sum[j])%todiv==0){
-                    answer++;
-                }
-            }
-        }
+        int answer = calculateAll(length, todiv, sum);
         bw.write(answer+"\n");
         bw.flush();
         bw.close();
 
     }
+
+    private static int calculateAll(int length, int todiv, int[] sum) {
+        int answer = 0;
+        for(int i = 1; i< length +1; i++){
+            for(int j = 0 ; j< i;j++){
+                if((sum[i]- sum[j])% todiv ==0){
+                    answer++;
+                }
+            }
+        }
+        return answer;
+    }
+
 }
