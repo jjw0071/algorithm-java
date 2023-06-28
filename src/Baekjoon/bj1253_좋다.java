@@ -10,11 +10,11 @@ public class bj1253_좋다 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int size = Integer.parseInt(br.readLine());
-        int[] nums = new int[size];
+        long[] nums = new long[size];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for(int i = 0 ; i < size ;i++){
-            nums[i] = Integer.parseInt(st.nextToken());
+            nums[i] = Long.parseLong(st.nextToken());
         }
 
         Arrays.sort(nums);
@@ -22,7 +22,7 @@ public class bj1253_좋다 {
         int startindex = 0;
         int lastindex = size-1;
         int answer = 0;
-        int check = 0;
+        long check = 0;
 
         for(int i = 0 ; i < size ;i++){
             startindex = 0;
