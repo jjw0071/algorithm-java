@@ -24,61 +24,23 @@ public class Main {
         meetingTimes.sort(new Comparator<Integer[]>() {
             @Override
             public int compare(Integer[] o1, Integer[] o2) {
-                if(!o1[0].equals(o2[0])){
-                    return o1[0] - o2[0];
+                if(!o1[1].equals(o2[1])){
+                    return o1[1] - o2[1];
                 }
-                return o1[1] - o2[1];
+                return o1[0] - o2[0];
             }
         });
 
-        start = meetingTimes.get(0)[0];
-        end = meetingTimes.get(0)[1];
-        int indexOfminimum = 0;
-        int duration = end - start;
-        for(int i = 1 ; i < meetingTimes.size();i++){
-           meeting = meetingTimes.get(i);
-           if(start==meeting[0]){
-               if(meeting[0] == meeting[1]){
-                   end = meeting[1];
-                   indexOfminimum = i;
-                   continue;
-               }
-               if(start == end && meeting[1]>end){
-                   end = meeting[1];
-                   indexOfminimum = i;
-                   continue;
-               }
-               meetingTimes.remove(i);
-               i--;
-               continue;
-           }
-           if(start < meeting[0]){
-               if(meeting[0]>=end){
-                   start = meeting[0];
-                   end = meeting[1];
-                   indexOfminimum = i;
-                   continue;
-               }else{
-                   if(meeting[1] >=end ){
-                       meetingTimes.remove(i);
-                       i--;
-                       continue;
-                   }else{
-                       start = meeting[0];
-                       end = meeting[1];
-                       meetingTimes.remove(indexOfminimum);
-                       indexOfminimum = i-1;
-                       i--;
-                       continue;
-                   }
-
-               }
-
-
-           }
+        int count = 0;
+        end = 0;
+        for(int i = 0 ; i < meetingTimes.size();i++){
+            if(meetingTimes.get(i)[0]>=end){
+                end = meetingTimes.get(i)[1];
+                count++;
+            }
         }
 
-        bw.write(meetingTimes.size()+"\n");
+        bw.write(count+"\n");
         bw.flush();
         bw.close();
     }
