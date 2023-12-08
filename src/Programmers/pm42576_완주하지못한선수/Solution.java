@@ -1,4 +1,4 @@
-package Programmers.pm42576;
+package Programmers.pm42576_완주하지못한선수;
 
 import java.util.HashMap;
 
