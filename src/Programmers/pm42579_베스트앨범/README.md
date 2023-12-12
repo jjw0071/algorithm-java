@@ -23,4 +23,4 @@ Index로 만들었다. 그렇게 해서 새로 값이 추가 될때 재생횟수
 https://school.programmers.co.kr/learn/courses/30/lessons/42579?language=java
 
 ## 추가적으로 알게 된 부분
-Comparator를 구현하고 Stream을 활용하는 방법에 대해 좀 더 공부해 보면 좋을 듯 하다.
+Comparator구현에 대해 좀 더 공부해 보면 좋을 듯 하다.
