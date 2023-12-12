@@ -18,7 +18,6 @@ public class Solution {
     }
 
     public static int[] solution(String[] genres, int[] plays) {
-        int[] answer = {};
         HashMap<String, Integer> totalPlayed = new HashMap<>();
         HashMap<String, PriorityQueue<Map.Entry<Integer, Integer>>> mapForGenre = new HashMap<>();
         for(int i = 0 ; i < genres.length; i++){
@@ -50,7 +49,11 @@ public class Solution {
             }
             answerList.add(queue.poll().getValue());
         }
-        return answerList.stream().mapToInt(i -> i).toArray();
+        int[] answer = new int[answerList.size()];
+        for(int i = 0 ; i < answer.length;i++){
+            answer[i] = answerList.get(i);
+        }
+        return answer;
 
     }
 
