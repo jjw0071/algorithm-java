@@ -25,8 +25,13 @@ public class Main {
                 Arrays.fill(arr,-1);
             }
         }
+        // 토마토 수
         int tomato = 0;
+
+        // 익은 토마토 수
         int doneTom = 0;
+
+        // 처음 입력값 확인하며 박스에 토마토 채우기
         for(int h = 0 ; h < hei; h++){
             for(int r = 0 ; r < row ; r++){
                 st = new StringTokenizer(br.readLine());
@@ -43,6 +48,8 @@ public class Main {
                 }
             }
         }
+
+        // 이미 익은 토마토와 총 토마토 수가 같을 경우 0 출력하고 종료
         if(queue.size() == tomato){
             bw.write(0+"\n");
             bw.flush();
@@ -71,12 +78,16 @@ public class Main {
         int done = 0;
 
         while(!queue.isEmpty()){
+
+            // 당일에 큐에 들어있는 위치 확인(하루동안 익은 토마토만 확인)
             int size = queue.size();
             for(int i = 0 ; i < size;i++){
                 Location l = queue.poll();
                 if(!visited[l.height][l.row][l.column]){
                     visited[l.height][l.row][l.column] = true;
                     done++;
+
+                    // 앞, 뒤, 좌, 우, 상, 하를 확인해 익지 않은 토마토의 위치만 큐에 추가
                     for(int j = 0; j<6;j++){
                         int tStatus = box[l.height+dz[j]][l.row+dx[j]][l.column+dy[j]];
                         if(tStatus == 0){
@@ -88,14 +99,18 @@ public class Main {
                     }
                 }
             }
+
+            // 존재하는 토마토가 모두 익은 경우
             if(done == tom){
                 return day;
             }
 
+            // 전체 박스 칸 수보다 일 수가 더 커지면 모든 칸을 확인했다 생각하고 -1 return
             if(day > row*col*hei+2){
                 return -1;
             }
 
+            // 하루가 지남
             day++;
 
         }
