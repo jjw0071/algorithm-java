@@ -8,8 +8,8 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int[][] road;
+    static int[][] reverseRoad;
     static int target;
-    static int[][] shortest;
     static PriorityQueue<int[]> pq;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,18 +21,17 @@ public class Main {
 
         int from, to, time;
         road = new int[N+1][N+1];
-        shortest = new int[N+1][N+1];
+        reverseRoad = new int[N+1][N+1];
         for(int[] r : road){
             Arrays.fill(r,-1);
         }
 
-        for(int[] r : shortest){
-            Arrays.fill(r,0);
+        for(int[] r : reverseRoad){
+            Arrays.fill(r,-1);
         }
 
         for(int i = 0 ; i < road.length ;i++){
             road[i][i] = 0;
-            shortest[i][i] = 0;
         }
 
         for(int i = 0 ; i < M; i++){
@@ -41,19 +40,18 @@ public class Main {
             to = Integer.parseInt(st.nextToken());
             time = Integer.parseInt(st.nextToken());
             road[from][to] = time;
+            reverseRoad[to][from] = time;
         }
 
         pq = new PriorityQueue<>((o1, o2) -> o1[0] - o2[0]);
 
-        for(int i = 0 ; i < road.length; i++){
-            d(i);
-        }
+        int[] s1 = d(target, road);
+        int[] s2 = d(target, reverseRoad);
 
         int answer = -1;
         int dist;
         for(int i = 0 ; i < road.length; i++){
-            dist = shortest[i][target];
-            dist += shortest[target][i];
+            dist = s1[i] + s2[i];
             answer = Math.max(answer, dist);
         }
 
@@ -63,7 +61,8 @@ public class Main {
         bw.close();
     }
 
-    public static void d(int i){
+    public static int[] d(int i, int[][] road){
+        int[] shortest = new int[road.length];
         int dest = 0;
         for(int a : road[i]){
             if(a == 0 || a == -1){
@@ -84,9 +83,9 @@ public class Main {
             info = pq.poll();
             time = info[0];
             dest = info[1];
-            stime = shortest[i][info[1]];
+            stime = shortest[info[1]];
             if(stime == 0 || stime > info[0]){
-                shortest[i][dest] = time;
+                shortest[dest] = time;
                 for(int j = 1;  j < road.length; j++){
                     if(j == i){
                         continue;
@@ -96,12 +95,12 @@ public class Main {
                         continue;
                     }
                     ntime = nextTime + time;
-                    if(shortest[i][j] >time || shortest[i][j] == 0){
+                    if(shortest[j] >time || shortest[j] == 0){
                         pq.add(new int[]{ntime, j});
                     }
                 }
             }
-
         }
+        return shortest;
     }
 }
